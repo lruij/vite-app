@@ -36,5 +36,13 @@ export default defineConfig({
     sourcemap: true,
     minify: 'terser',
     assetsInlineLimit: 4000
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
   }
 })
