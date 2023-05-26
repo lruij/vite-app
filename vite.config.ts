@@ -5,4 +5,11 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
+  build: {
+    chunkSizeWarningLimit: 2000,
+    cssCodeSplit: true,
+    sourcemap: true,
+    minify: 'terser',
+    assetsInlineLimit: 4000
+  }
 })
