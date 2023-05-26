@@ -1,4 +1,5 @@
 <template>
+  <h1>Test Store</h1>
    <div>Pinia state: {{  Test.current }} -- {{ Test.name }}</div>
    <div>响应式解构: {{  current }} -- {{ name }}</div>
    <button @click="change">$patch 方法：改变数据</button>
@@ -18,10 +19,15 @@
 
    <br>
    <button @click="Test.$reset()">重置数据</button>
+
+
+    <hr>
+    <h1>Base Store</h1>
+    <div>{{ Base.baseCurrent }}</div>
 </template>
 
 <script setup lang='ts'>
-import { useTestStore } from './store'
+import { useTestStore, useBaseStore } from './store'
 import { storeToRefs } from 'pinia'
 
 const Test = useTestStore()
@@ -78,6 +84,11 @@ Test.$onAction((args) => {
   console.log(args);
 
 })
+
+
+// ======= Base Store ========
+
+const Base = useBaseStore()
 </script>
 
 <style lang='scss' scoped>
